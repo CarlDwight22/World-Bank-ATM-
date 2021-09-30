@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>World Bank (ATM)</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="gis:earth-australia" rel="icon">
+  <link href="gis:earth-australia" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Selecao - v4.5.0
+  * Template URL: https://bootstrapmade.com/selecao-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body ng-app="atm">
+  <script src="js/app.js"></script>
+  <script src="js/MainController/MainController.js"></script>
+   <script>
+    function show(shown, hidden) {
+      document.getElementById(shown).style.display='block';
+      document.getElementById(hidden).style.display='none';
+      return false;
+    }
+    </script>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <div class="logo">
+        <h1><a href="index.html">World Bank</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+    </div>
+  </header><!-- End Header -->
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" data-bs-interval="5000" class="container carousel carousel-fade" data-bs-ride="carousel">
+
+      <!-- ATM SLIDE -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <div>
+
+<!--  Page 1 selection -->
+            <div id="Page1">
+            <h1>Please select your desired transactions</h1>
+              <div>
+                <a href="Page2" onclick="return show('Page2','Page1');" 
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Cash Withdrawal</a>
+                <a href="Page3" onclick="return show('Page3','Page1');"
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Bill Payment</a>
+                <a href="Page4" onclick="return show('Page4','Page1');" 
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Balance Inquiry</a>
+                <a href="Page5" onclick="return show('Page5','Page1');"
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Transfer</a>
+                <a href="Page6" onclick="return show('Page6','Page1');"
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Deposit</a>
+                <a href="Page5" onclick="return show('Page7','Page1');"
+                  class="btn-get-started animate__animated animate__fadeInUp scrollto">Exit</a>
+              </div>
+            </div>
+
+<!--  Cash Withdraw -->
+            <div id="Page2" style="display:none">
+                <div id="Pageca">
+                    <h1>Cash Withdrawal</h1>
+                    <h2>Please Enter Your Amount</h2>
+                    <div ng-controller = "withdraw">
+                          <input type = "text" ng-model="num1">
+                          <input type="button" ng-model="type" ng-click="type(num1)" value="Enter">
+                          <br>
+                          {{ txt }} {{ ans }}<br>
+                          {{ txtsum }} {{ ans2 }}
+                          <br>
+                     </div>
+                    <a href="Page1" onclick="return show('Pagecb','Pageca');">OK</a>
+                </div>
+
+                <div id="Pagecb" style="display:none">
+                    <h1>Cash Withdrawal</h1>
+                    <h2>Transaction Succeed</h2>
+            <!--
+                    <div ng-controller = "withdraw" ng-model="type">
+                      Total Cash Withdraw is Php. {{ ans }}<br>
+                    </div>
+                    <div ng-controller="withdraw" ng-model="type">
+                      The remaining amount is Php. {{ ans2 }}
+                    </div>
+            -->
+                    <a href="Page1" onclick="return show('Page1','Pagecb');">OK</a>
+                </div>
+            </div>
+
+
+<!--  Bill Payment -->
+            <div id="Page3" style="display:none">
+                  <div id="Pageba">
+                    <h1>Bill Payment</h1>
+                    <h2>Please Enter Bill Reference No.</h2>
+                     <div ng-controller = "billno">
+                          <input type = "text" ng-model="num1">
+                          <input type="button" ng-model="bills" ng-click="bills(num1)" value="Enter">
+                          <br>
+                          {{ txtr }} {{ ansr }}<br> 
+                     </div>
+                    <a href="Page1" onclick="return show('Pagebb','Pageba');">OK</a>
+                </div>
+
+                <div id="Pagebb" style="display:none">
+                    <h1>Bill Payment</h1>
+                    <h2>Please Enter Your Total Bill</h2>
+                    <div ng-controller = "bill">
+                          <input type = "text" ng-model="num1">
+                          <input type="button" ng-model="type" ng-click="type(num1)" value="Enter">
+                          <br>
+                          {{ txt }} {{ ans }}<br>
+                          {{ txtsum }} {{ ans2 }}
+                          <br>
+                     </div>
+                    <a href="Page1" onclick="return show('Pagebc','Pagebb');">OK</a>
+                </div>
+
+                <div id="Pagebc" style="display:none">
+                    <h1>Bill Payment</h1>
+                    <h2>Payment Successfully</h2>
+         <!--            
+                    <div ng-controller="bill">
+                      <br>Refference No.{{ ans }}
+                      <br>Total Bill {{ ans2 }}
+                    </div>
+         -->           
+                    <a href="Page1" onclick="return show('Page1','Pagebc');">OK</a>
+                </div>
+            </div>
+
+<!--  Balance Inquiry -->
+            <div id="Page4" style="display:none">
+                <h1>Balance Inquiry</h1>
+                <h2>Your total balance is</h2>
+
+                <div ng-controller="Balance">
+                  <h4>{{ balance }}</h4>
+                </div>
+                <a href="Page1" onclick="return show('Page1','Page4');">OK</a>
+            </div>
+
+<!--  Transfer -->
+            <div id="Page5" style="display:none">
+                <div id="Pagea">
+                    <h1>Transfer</h1>
+                    <h2>Please Enter the Account Number you Want to Transfer Money</h2>
+                     <div ng-controller = "transferno">
+                          <input type = "text" ng-model="num1">
+                          <input type="button" ng-model="type" ng-click="type(num1)" value="Enter">
+                          <br>
+                          {{ txtr }} {{ ansr }}<br> 
+                     </div>  
+                    <a href="Page1" onclick="return show('Pageb','Pagea');">OK</a>
+                </div>
+
+                <div id="Pageb" style="display:none">
+                    <h1>Transfer</h1>
+                    <h2>Please Enter the Amount you Want to Transfer</h2>
+                    <div ng-controller = "transfer">
+                          <input type = "text" ng-model="num1">
+                          <input type="button" ng-model="type" ng-click="type(num1)" value="Enter">
+                          <br>
+                          {{ txt }} {{ ans }}<br>
+                          {{ txtsum }} {{ ans2 }}
+                          <br>
+                     </div>
+                    <a href="Page1" onclick="return show('Pagec','Pageb');">OK</a>
+                </div>
+
+                <div id="Pagec" style="display:none">
+                    <h1>Transfer</h1>
+                    <h2>Transaction Succesfully!!!</h2>
+        <!--            
+                    <div ng-controller="transfer">
+                      <br>Account No.{{ ans }}
+                      <br>Amount transfer {{ ans2 }}
+                    </div>
+         --> 
+                    <a href="Page1" onclick="return show('Page1','Pagec');">OK</a>
+                </div>
+            </div>
+
+<!--  Deposit -->
+            <div id="Page6" style="display:none">
+                <div id="Pageda">
+                    <h1>Deposit</h1>
+                    <h2>Please Enter Amount you Want to Deposit</h2>
+                    <div ng-controller = "deposit">
+                          <input type = "text" ng-model="num1">
+                          <input type="button" ng-model="type" ng-click="type(num1)" value="Enter">
+                          <br>
+                          {{ txt }} {{ ans }}<br>
+                          {{ txtsum }} {{ ans2 }}
+                          <br>
+                     </div>
+                <a href="Page1" onclick="return show('Pagedb','Pageda');">OK</a>
+                </div>
+
+                <div id="Pagedb" style="display:none">
+                    <h1>Transfer</h1>
+                    <h2>Deposit Successfully</h2>
+    
+                    <a href="Page1" onclick="return show('Page1','Pagedb');">OK</a>
+                </div>
+            </div>
+
+<!--  Exit -->
+            <div id="Page7" style="display:none">
+                <h1>Exit</h1>
+                <h2>Are You Sure You Want to Exit?</h2>
+                <a href="index.html" onclick="return show('index.html','Page7');"class="btn-get-started animate__animated animate__fadeInUp scrollto" width="20px" value="Enter">OK</a>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+
+
+<!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div> </div>
+    </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <h3>World Bank</h3>
+      <p>an international financial institution that provides loans and grants to the governments of low- and middle-income countries for the purpose of pursuing capital projects.</p>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+      </div>
+      <div class="copyright">
+        &copy; Copyright <strong><span>Selecao</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/selecao-bootstrap-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
